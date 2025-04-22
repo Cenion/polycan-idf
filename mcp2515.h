@@ -22,156 +22,9 @@
 #define MCP_8MHz_250kBPS_CFG2 (0xB1)
 #define MCP_8MHz_250kBPS_CFG3 (0x85)
 
-#define MCP_8MHz_200kBPS_CFG1 (0x00)
-#define MCP_8MHz_200kBPS_CFG2 (0xB4)
-#define MCP_8MHz_200kBPS_CFG3 (0x86)
-
 #define MCP_8MHz_125kBPS_CFG1 (0x01)
 #define MCP_8MHz_125kBPS_CFG2 (0xB1)
 #define MCP_8MHz_125kBPS_CFG3 (0x85)
-
-#define MCP_8MHz_100kBPS_CFG1 (0x01)
-#define MCP_8MHz_100kBPS_CFG2 (0xB4)
-#define MCP_8MHz_100kBPS_CFG3 (0x86)
-
-#define MCP_8MHz_80kBPS_CFG1 (0x01)
-#define MCP_8MHz_80kBPS_CFG2 (0xBF)
-#define MCP_8MHz_80kBPS_CFG3 (0x87)
-
-#define MCP_8MHz_50kBPS_CFG1 (0x03)
-#define MCP_8MHz_50kBPS_CFG2 (0xB4)
-#define MCP_8MHz_50kBPS_CFG3 (0x86)
-
-#define MCP_8MHz_40kBPS_CFG1 (0x03)
-#define MCP_8MHz_40kBPS_CFG2 (0xBF)
-#define MCP_8MHz_40kBPS_CFG3 (0x87)
-
-#define MCP_8MHz_33k3BPS_CFG1 (0x47)
-#define MCP_8MHz_33k3BPS_CFG2 (0xE2)
-#define MCP_8MHz_33k3BPS_CFG3 (0x85)
-
-#define MCP_8MHz_31k25BPS_CFG1 (0x07)
-#define MCP_8MHz_31k25BPS_CFG2 (0xA4)
-#define MCP_8MHz_31k25BPS_CFG3 (0x84)
-
-#define MCP_8MHz_20kBPS_CFG1 (0x07)
-#define MCP_8MHz_20kBPS_CFG2 (0xBF)
-#define MCP_8MHz_20kBPS_CFG3 (0x87)
-
-#define MCP_8MHz_10kBPS_CFG1 (0x0F)
-#define MCP_8MHz_10kBPS_CFG2 (0xBF)
-#define MCP_8MHz_10kBPS_CFG3 (0x87)
-
-#define MCP_8MHz_5kBPS_CFG1 (0x1F)
-#define MCP_8MHz_5kBPS_CFG2 (0xBF)
-#define MCP_8MHz_5kBPS_CFG3 (0x87)
-
-/*
- *  speed 16M
- */
-#define MCP_16MHz_1000kBPS_CFG1 (0x00)
-#define MCP_16MHz_1000kBPS_CFG2 (0xD0)
-#define MCP_16MHz_1000kBPS_CFG3 (0x82)
-
-#define MCP_16MHz_500kBPS_CFG1 (0x00)
-#define MCP_16MHz_500kBPS_CFG2 (0xF0)
-#define MCP_16MHz_500kBPS_CFG3 (0x86)
-
-#define MCP_16MHz_250kBPS_CFG1 (0x41)
-#define MCP_16MHz_250kBPS_CFG2 (0xF1)
-#define MCP_16MHz_250kBPS_CFG3 (0x85)
-
-#define MCP_16MHz_200kBPS_CFG1 (0x01)
-#define MCP_16MHz_200kBPS_CFG2 (0xFA)
-#define MCP_16MHz_200kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_125kBPS_CFG1 (0x03)
-#define MCP_16MHz_125kBPS_CFG2 (0xF0)
-#define MCP_16MHz_125kBPS_CFG3 (0x86)
-
-#define MCP_16MHz_100kBPS_CFG1 (0x03)
-#define MCP_16MHz_100kBPS_CFG2 (0xFA)
-#define MCP_16MHz_100kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_80kBPS_CFG1 (0x03)
-#define MCP_16MHz_80kBPS_CFG2 (0xFF)
-#define MCP_16MHz_80kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_83k3BPS_CFG1 (0x03)
-#define MCP_16MHz_83k3BPS_CFG2 (0xBE)
-#define MCP_16MHz_83k3BPS_CFG3 (0x07)
-
-#define MCP_16MHz_50kBPS_CFG1 (0x07)
-#define MCP_16MHz_50kBPS_CFG2 (0xFA)
-#define MCP_16MHz_50kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_40kBPS_CFG1 (0x07)
-#define MCP_16MHz_40kBPS_CFG2 (0xFF)
-#define MCP_16MHz_40kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_33k3BPS_CFG1 (0x4E)
-#define MCP_16MHz_33k3BPS_CFG2 (0xF1)
-#define MCP_16MHz_33k3BPS_CFG3 (0x85)
-
-#define MCP_16MHz_20kBPS_CFG1 (0x0F)
-#define MCP_16MHz_20kBPS_CFG2 (0xFF)
-#define MCP_16MHz_20kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_10kBPS_CFG1 (0x1F)
-#define MCP_16MHz_10kBPS_CFG2 (0xFF)
-#define MCP_16MHz_10kBPS_CFG3 (0x87)
-
-#define MCP_16MHz_5kBPS_CFG1 (0x3F)
-#define MCP_16MHz_5kBPS_CFG2 (0xFF)
-#define MCP_16MHz_5kBPS_CFG3 (0x87)
-
-/*
- *  speed 20M
- */
-#define MCP_20MHz_1000kBPS_CFG1 (0x00)
-#define MCP_20MHz_1000kBPS_CFG2 (0xD9)
-#define MCP_20MHz_1000kBPS_CFG3 (0x82)
-
-#define MCP_20MHz_500kBPS_CFG1 (0x00)
-#define MCP_20MHz_500kBPS_CFG2 (0xFA)
-#define MCP_20MHz_500kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_250kBPS_CFG1 (0x41)
-#define MCP_20MHz_250kBPS_CFG2 (0xFB)
-#define MCP_20MHz_250kBPS_CFG3 (0x86)
-
-#define MCP_20MHz_200kBPS_CFG1 (0x01)
-#define MCP_20MHz_200kBPS_CFG2 (0xFF)
-#define MCP_20MHz_200kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_125kBPS_CFG1 (0x03)
-#define MCP_20MHz_125kBPS_CFG2 (0xFA)
-#define MCP_20MHz_125kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_100kBPS_CFG1 (0x04)
-#define MCP_20MHz_100kBPS_CFG2 (0xFA)
-#define MCP_20MHz_100kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_83k3BPS_CFG1 (0x04)
-#define MCP_20MHz_83k3BPS_CFG2 (0xFE)
-#define MCP_20MHz_83k3BPS_CFG3 (0x87)
-
-#define MCP_20MHz_80kBPS_CFG1 (0x04)
-#define MCP_20MHz_80kBPS_CFG2 (0xFF)
-#define MCP_20MHz_80kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_50kBPS_CFG1 (0x09)
-#define MCP_20MHz_50kBPS_CFG2 (0xFA)
-#define MCP_20MHz_50kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_40kBPS_CFG1 (0x09)
-#define MCP_20MHz_40kBPS_CFG2 (0xFF)
-#define MCP_20MHz_40kBPS_CFG3 (0x87)
-
-#define MCP_20MHz_33k3BPS_CFG1 (0x0B)
-#define MCP_20MHz_33k3BPS_CFG2 (0xFF)
-#define MCP_20MHz_33k3BPS_CFG3 (0x87)
-
 
 static const uint8_t CANSTAT_OPMOD = 0xE0;
 static const uint8_t CANSTAT_ICOD = 0x0E;
@@ -210,25 +63,11 @@ static const uint8_t CANCTRL_CLKPRE = 0x03;
 #define N_RXBUFFERS 2
 
 typedef enum {
-    MCP_20MHZ,
-    MCP_16MHZ,
     MCP_8MHZ
 }CAN_CLOCK_t;
 
 typedef enum {
-    CAN_5KBPS,
-    CAN_10KBPS,
-    CAN_20KBPS,
-    CAN_31K25BPS,
-    CAN_33KBPS,
-    CAN_40KBPS,
-    CAN_50KBPS,
-    CAN_80KBPS,
-    CAN_83K3BPS,
-    CAN_95KBPS,
-    CAN_100KBPS,
     CAN_125KBPS,
-    CAN_200KBPS,
     CAN_250KBPS,
     CAN_500KBPS,
     CAN_1000KBPS
@@ -470,46 +309,44 @@ typedef struct MCP2515_s{
 	spi_device_handle_t spi;
 }MCP2515_t[1], *MCP2515;
 
-ERROR_t MCP2515_setMode(const CANCTRL_REQOP_MODE_t mode);
+ERROR_t MCP2515_setMode(MCP2515 *MCP2515_Object, const CANCTRL_REQOP_MODE_t mode);
 
-uint8_t MCP2515_readRegister(const REGISTER_t reg);
-void MCP2515_readRegisters(const REGISTER_t reg, uint8_t values[], const uint8_t n);
-void MCP2515_setRegister(const REGISTER_t reg, const uint8_t value);
-void MCP2515_setRegisters(const REGISTER_t reg, const uint8_t values[], const uint8_t n);
-void MCP2515_modifyRegister(const REGISTER_t reg, const uint8_t mask, const uint8_t data);
+uint8_t MCP2515_readRegister(MCP2515 *MCP2515_Object, const REGISTER_t reg);
+void MCP2515_readRegisters(MCP2515 *MCP2515_Object, const REGISTER_t reg, uint8_t values[], const uint8_t n);
+void MCP2515_setRegister(MCP2515 *MCP2515_Object, const REGISTER_t reg, const uint8_t value);
+void MCP2515_setRegisters(MCP2515 *MCP2515_Object, const REGISTER_t reg, const uint8_t values[], const uint8_t n);
+void MCP2515_modifyRegister(MCP2515 *MCP2515_Object, const REGISTER_t reg, const uint8_t mask, const uint8_t data);
 
-void MCP2515_prepareId(uint8_t *buffer, const bool ext, const uint32_t id);
+void MCP2515_prepareId(MCP2515 *MCP2515_Object, uint8_t *buffer, const bool ext, const uint32_t id);
 
-ERROR_t MCP2515_init();
-ERROR_t MCP2515_reset(void);
-ERROR_t MCP2515_setConfigMode();
-ERROR_t MCP2515_setListenOnlyMode();
-ERROR_t MCP2515_setSleepMode();
-ERROR_t MCP2515_setLoopbackMode();
-ERROR_t MCP2515_setNormalMode();
-ERROR_t MCP2515_setOneShotMode(bool set);
-ERROR_t MCP2515_setClkOut(const CAN_CLKOUT_t divisor);
-ERROR_t MCP2515_setBitrate(const CAN_SPEED_t canSpeed, const CAN_CLOCK_t canClock);
-ERROR_t MCP2515_setFilterMask(const MASK_t num, const bool ext, const uint32_t ulData);
-ERROR_t MCP2515_setFilter(const RXF_t num, const bool ext, const uint32_t ulData);
-ERROR_t MCP2515_sendMessage(const TXBn_t txbn, const CAN_FRAME frame);
-ERROR_t MCP2515_sendMessageAfterCtrlCheck(const CAN_FRAME frame);
-ERROR_t MCP2515_readMessage(const RXBn_t rxbn, const CAN_FRAME frame);
-ERROR_t MCP2515_readMessageAfterStatCheck(const CAN_FRAME frame);
-bool MCP2515_checkReceive(void);
-bool MCP2515_checkError(void);
-uint8_t MCP2515_getErrorFlags(void);
-void MCP2515_clearRXnOVRFlags(void);
-uint8_t MCP2515_getInterrupts(void);
-uint8_t MCP2515_getInterruptMask(void);
-void MCP2515_clearInterrupts(void);
-void MCP2515_clearTXInterrupts(void);
-uint8_t MCP2515_getStatus(void);
-void MCP2515_clearRXnOVR(void);
-void MCP2515_clearMERR();
-void MCP2515_clearERRIF();
-
-extern MCP2515 MCP2515_Object;
+ERROR_t MCP2515_init(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_reset(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_setConfigMode(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_setListenOnlyMode(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_setSleepMode(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_setLoopbackMode(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_setNormalMode(MCP2515 *MCP2515_Object);
+ERROR_t MCP2515_setOneShotMode(MCP2515 *MCP2515_Object, bool set);
+ERROR_t MCP2515_setClkOut(MCP2515 *MCP2515_Object, const CAN_CLKOUT_t divisor);
+ERROR_t MCP2515_setBitrate(MCP2515 *MCP2515_Object, const CAN_SPEED_t canSpeed, const CAN_CLOCK_t canClock);
+ERROR_t MCP2515_setFilterMask(MCP2515 *MCP2515_Object, const MASK_t num, const bool ext, const uint32_t ulData);
+ERROR_t MCP2515_setFilter(MCP2515 *MCP2515_Object, const RXF_t num, const bool ext, const uint32_t ulData);
+ERROR_t MCP2515_sendMessage(MCP2515 *MCP2515_Object, const TXBn_t txbn, const CAN_FRAME frame);
+ERROR_t MCP2515_sendMessageAfterCtrlCheck(MCP2515 *MCP2515_Object, const CAN_FRAME frame);
+ERROR_t MCP2515_readMessage(MCP2515 *MCP2515_Object, const RXBn_t rxbn, const CAN_FRAME *frame);
+ERROR_t MCP2515_readMessageAfterStatCheck(MCP2515 *MCP2515_Object, const CAN_FRAME *frame);
+bool MCP2515_checkReceive(MCP2515 *MCP2515_Object);
+bool MCP2515_checkError(MCP2515 *MCP2515_Object);
+uint8_t MCP2515_getErrorFlags(MCP2515 *MCP2515_Object);
+void MCP2515_clearRXnOVRFlags(MCP2515 *MCP2515_Object);
+uint8_t MCP2515_getInterrupts(MCP2515 *MCP2515_Object);
+uint8_t MCP2515_getInterruptMask(MCP2515 *MCP2515_Object);
+void MCP2515_clearInterrupts(MCP2515 *MCP2515_Object);
+void MCP2515_clearTXInterrupts(MCP2515 *MCP2515_Object);
+uint8_t MCP2515_getStatus(MCP2515 *MCP2515_Object);
+void MCP2515_clearRXnOVR(MCP2515 *MCP2515_Object);
+void MCP2515_clearMERR(MCP2515 *MCP2515_Object);
+void MCP2515_clearERRIF(MCP2515 *MCP2515_Object);
 
 
 #endif

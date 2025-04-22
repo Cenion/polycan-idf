@@ -1,25 +1,25 @@
 # ESP32 MCP2515 CAN interface library in C, for ESP-IDF framework.
 
-it's a fork of [MCP2515 CAN interface library in C++ for ESP-IDF](https://github.com/zeroomega/esp32-mcp2515)
+it's a fork of [MCP2515 CAN interface library for ESP-IDF](https://github.com/Microver-Electronics/mcp2515-esp32-idf)
 
 CAN-BUS is a common industrial bus because of its long travel distance, medium communication speed and high reliability. It is commonly found on modern machine tools and as an automotive diagnostic bus. This CAN-BUS Shield gives your esp32/esp8266 CAN-BUS capibility. With an OBD-II converter cable added on and the OBD-II library imported, you are ready to build an onboard diagnostic device or data logger.
 
 - Implements CAN V2.0B at up to 1 Mb/s
-- SPI Interface up to 10 MHz
+- SPI Interface 8 MHz
 - Standard (11 bit) and extended (29 bit) data and remote frames
 - Two receive buffers with prioritized message storage
 
 **Contents:**
-* [Component Setup](#component-setup)
-* [Hardware](#hardware)
-   * [CAN Shield](#can-shield)
-* [Software Usage](#software-usage)
-   * [Initialization](#initialization)
-   * [Frame data format](#frame-data-format)
-   * [Send Data](#send-data)
-   * [Receive Data](#receive-data)
-   * [Set Receive Mask and Filter](#set-receive-mask-and-filter)
-   * [Examples](#examples)
+- [ESP32 MCP2515 CAN interface library in C, for ESP-IDF framework.](#esp32-mcp2515-can-interface-library-in-c-for-esp-idf-framework)
+- [Component Setup](#component-setup)
+- [Hardware:](#hardware)
+	- [CAN Shield](#can-shield)
+- [Software Usage:](#software-usage)
+	- [Initialization](#initialization)
+	- [Frame data format](#frame-data-format)
+	- [Send Data](#send-data)
+	- [Receive Data](#receive-data)
+	- [Set Receive Mask and Filter](#set-receive-mask-and-filter)
 
 # Component Setup
 
@@ -57,19 +57,7 @@ MCP2515_setListenOnlyMode();
 The available baudrates are listed as follows:
 ```C
 enum CAN_SPEED {
-    CAN_5KBPS,
-    CAN_10KBPS,
-    CAN_20KBPS,
-    CAN_31K25BPS,
-    CAN_33KBPS,
-    CAN_40KBPS,
-    CAN_50KBPS,
-    CAN_80KBPS,
-    CAN_83K3BPS,
-    CAN_95KBPS,
-    CAN_100KBPS,
     CAN_125KBPS,
-    CAN_200KBPS,
     CAN_250KBPS,
     CAN_500KBPS,
     CAN_1000KBPS
@@ -80,9 +68,8 @@ enum CAN_SPEED {
 Example of initialization
 
 ```C
-bool SPI_Init(void)
+bool SPI_Init(MCP2515 *MCP2515_Object)
 {
-	printf("Hello from SPI_Init!\n\r");
 	esp_err_t ret;
 	//Configuration for the SPI bus
 	spi_bus_config_t bus_cfg={
@@ -97,9 +84,9 @@ bool SPI_Init(void)
 	// Define MCP2515 SPI device configuration
 	spi_device_interface_config_t dev_cfg = {
 		.mode = 0, // (0,0)
-		.clock_speed_hz = 10000000, // 10mhz
+		.clock_speed_hz = 8e6, // 8mhz
 		.spics_io_num = PIN_NUM_CS,
-		.queue_size = 128
+		.queue_size = 1024
 	};
 
 	// Initialize SPI bus
@@ -107,7 +94,7 @@ bool SPI_Init(void)
 	ESP_ERROR_CHECK(ret);
 
 	// Add MCP2515 SPI device to the bus
-	ret = spi_bus_add_device(SPI2_HOST, &dev_cfg, &MCP2515_Object->spi);
+	ret = spi_bus_add_device(SPI2_HOST, &dev_cfg, &(*MCP2515_Object)->spi);
 	ESP_ERROR_CHECK(ret);
 
 	return true;
@@ -115,25 +102,22 @@ bool SPI_Init(void)
 
 void CAN_Init(void)
 {
-	MCP2515_init();
-	SPI_Init();
-	MCP2515_reset();
-	MCP2515_setBitrate(CAN_1000KBPS, MCP_8MHZ);
-	MCP2515_setNormalMode();
+	MCP2515 MCP2515_BMS = NULL;
+	MCP2515_init(&MCP2515_BMS);
+	SPI_Init(&MCP2515_BMS);
+	MCP2515_reset(&MCP2515_BMS);
+	MCP2515_setBitrate(&MCP2515_BMS, CAN_250KBPS, MCP_8MHZ);
+	MCP2515_setNormalMode(&MCP2515_BMS);
 }
 ```
 
-The available clock speeds are listed as follows:
+The only available clock speed is the following:
 
 ```C
 enum CAN_CLOCK {
-    MCP_20MHZ,
-    MCP_16MHZ,
     MCP_8MHZ
 };
 ```
-
-Default value is MCP_16MHZ, in my example it was 8MHZ.
 
 Note: To transfer data on high speed of CAN interface via UART dont forget to update UART baudrate as necessary.
 
@@ -154,8 +138,8 @@ For additional information see [SocketCAN](https://www.kernel.org/doc/Documentat
 ## Send Data
 
 ```C
-ERROR_t MCP2515_sendMessage(const TXBn_t txbn, const CAN_FRAME frame);
-ERROR_t MCP2515_sendMessageAfterCtrlCheck(const CAN_FRAME frame);
+ERROR_t MCP2515_sendMessage(MCP2515 *MCP2515_Object, const TXBn_t txbn, const CAN_FRAME frame);
+ERROR_t MCP2515_sendMessageAfterCtrlCheck(MCP2515 *MCP2515_Object, const CAN_FRAME frame);
 ```
 
 This is a function to send data onto the bus.
@@ -199,9 +183,8 @@ For example, In the 'send' example, we have:
 
 CAN_FRAME_t can_frame_rx[1];
 
-bool SPI_Init(void)
+bool SPI_Init(MCP2515 *MCP2515_Object)
 {
-	printf("Hello from SPI_Init!\n\r");
 	esp_err_t ret;
 	//Configuration for the SPI bus
 	spi_bus_config_t bus_cfg={
@@ -216,7 +199,7 @@ bool SPI_Init(void)
 	// Define MCP2515 SPI device configuration
 	spi_device_interface_config_t dev_cfg = {
 		.mode = 0, // (0,0)
-		.clock_speed_hz = 40000000, // 4 mhz
+		.clock_speed_hz = 8e6, // 4 mhz
 		.spics_io_num = PIN_NUM_CS,
 		.queue_size = 1024
 	};
@@ -226,7 +209,7 @@ bool SPI_Init(void)
 	ESP_ERROR_CHECK(ret);
 
     // Add MCP2515 SPI device to the bus
-    ret = spi_bus_add_device(SPI2_HOST, &dev_cfg, &MCP2515_Object->spi);
+    ret = spi_bus_add_device(SPI2_HOST, &dev_cfg, &(*MCP2515_Object)->spi);
     ESP_ERROR_CHECK(ret);
 
     return true;
@@ -234,13 +217,13 @@ bool SPI_Init(void)
 
 void app_main(void)
 {
-        printf("Hello from app_main!\n");
+	MCP2515 MCP2515_BMS = NULL;
+	MCP2515_init(&MCP2515_BMS);
 
-	MCP2515_init();
-	SPI_Init();
-	MCP2515_reset();
-	MCP2515_setBitrate(CAN_1000KBPS, MCP_8MHZ);
-	MCP2515_setNormalMode();
+	SPI_Init(&MCP2515_BMS);
+	MCP2515_reset(&MCP2515_BMS);
+	MCP2515_setBitrate(&MCP2515_BMS, CAN_250KBPS, MCP_8MHZ);
+	MCP2515_setNormalMode(&MCP2515_BMS);
 
 	can_frame_rx[0]->can_id = (0x12344321) | CAN_EFF_FLAG;
 	can_frame_rx[0]->can_dlc = 8;
@@ -270,8 +253,8 @@ void app_main(void)
 The following function is used to receive data on the 'receive' node:
 
 ```C++
-ERROR_t MCP2515_readMessage(const RXBn_t rxbn, const CAN_FRAME frame);
-ERROR_t MCP2515_readMessageAfterStatCheck(const CAN_FRAME frame);
+ERROR_t MCP2515_readMessage(MCP2515 *MCP2515_Object, const RXBn_t rxbn, const CAN_FRAME frame);
+ERROR_t MCP2515_readMessageAfterStatCheck(MCP2515 *MCP2515_Object, const CAN_FRAME frame);
 ```
 
 In conditions that masks and filters have been set. This function can only get frames that meet the requirements of masks and filters.
@@ -283,7 +266,7 @@ Example of poll read
 ```C
 CAN_FRAME frame;
 
-if (MCP2515_readMessage(&frame) == ERROR_OK) {
+if (MCP2515_readMessage(&MCP2515_Object, &frame) == ERROR_OK) {
 	// frame contains received message
 }
 ```
@@ -307,16 +290,16 @@ void while(1) {
     if (interrupt) {
         interrupt = false;
 
-        uint8_t irq = MCP2515_getInterrupts();
+        uint8_t irq = MCP2515_getInterrupts(&MCP2515_Object);
 
         if (irq & CANINTF_RX0IF) {
-            if (MCP2515_readMessage(RXB0, &frame) == ERROR_OK) {
+            if (MCP2515_readMessage(&MCP2515_Object, RXB0, &frame) == ERROR_OK) {
                 // frame contains received from RXB0 message
             }
         }
 
         if (irq & CANINTF_RX1IF) {
-            if (MCP2515_readMessage(RXB1, &frame) == ERROR_OK) {
+            if (MCP2515_readMessage(&MCP2515_Object, RXB1, &frame) == ERROR_OK) {
                 // frame contains received from RXB1 message
             }
         }
@@ -332,8 +315,8 @@ There are 2 receive mask registers and 5 filter registers on the controller chip
 We provide two functions for you to utilize these mask and filter registers. They are:
 
 ```C
-ERROR_t MCP2515_setFilterMask(const MASK_t num, const bool ext, const uint32_t ulData);
-ERROR_t MCP2515_setFilter(const RXF_t num, const bool ext, const uint32_t ulData);
+ERROR_t MCP2515_setFilterMask(MCP2515 *MCP2515_Object, const MASK_t num, const bool ext, const uint32_t ulData);
+ERROR_t MCP2515_setFilter(MCP2515 *MCP2515_Object, const RXF_t num, const bool ext, const uint32_t ulData);
 ```
 
 **MASK mask** represents one of two mask **MCP2515::MASK0** or **MCP2515::MASK1**
