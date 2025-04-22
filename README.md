@@ -1,4 +1,4 @@
-# ESP32 MCP2515 CAN interface library in C, for ESP-IDF framework.
+# Case specific ESP32 MCP2515 CAN interface library, for ESP-IDF framework.
 
 it's a fork of [MCP2515 CAN interface library for ESP-IDF](https://github.com/Microver-Electronics/mcp2515-esp32-idf)
 
@@ -10,7 +10,7 @@ CAN-BUS is a common industrial bus because of its long travel distance, medium c
 - Two receive buffers with prioritized message storage
 
 **Contents:**
-- [ESP32 MCP2515 CAN interface library in C, for ESP-IDF framework.](#esp32-mcp2515-can-interface-library-in-c-for-esp-idf-framework)
+- [Case specific ESP32 MCP2515 CAN interface library, for ESP-IDF framework.](#case-specific-esp32-mcp2515-can-interface-library-for-esp-idf-framework)
 - [Component Setup](#component-setup)
 - [Hardware:](#hardware)
 	- [CAN Shield](#can-shield)
